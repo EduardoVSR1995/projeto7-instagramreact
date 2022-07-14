@@ -13,53 +13,61 @@ function FundoMobile() {
 
 }
 
-function objetosDosStorys(){
+function objetosUsuarios(){
     const todosStorys = [
         {
             fotoPerfil: "img/9gag.svg",
             usuario: "9gag",
+            seguidor:"Segue você",
             post: "img/dog.svg",            
         }
         ,
         {
             fotoPerfil: "img/meowed.svg",
             usuario: "meowed",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/barked.svg",
             usuario: "barked",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/nathanwpylestrangeplanet.svg",
             usuario: "nathanwpylestrangeplanet",
+            seguidor:"Segue você",
             post: "img/nathanwpylestrangeplanet.svg",
         }
         ,
         {
             fotoPerfil: "img/wawawicomics.svg",
             usuario: "wawawicomics",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/respondeai.svg",
             usuario: "respondeai",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/filomoderna.svg",
             usuario: "filomoderna",
+            seguidor:"Segue você",
             post: "img/gato-telefone.svg",
         }
         ,
         {
             fotoPerfil: "img/memeriagourmet.svg",
             usuario: "memeriagourmet",
+            seguidor:"Segue você",
             post: "",
         }
         ,
@@ -67,49 +75,59 @@ function objetosDosStorys(){
             fotoPerfil: "img/catanacomics.svg",
             usuario: "catanacomics",
             segundoNome:"Catana",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/chibirdart.svg",
             usuario: "chibirdart",
+            seguidor:"Segue você",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/razoesparaacreditar.svg",
             usuario: "razoesparaacreditar",
+            seguidor:"Novo no Instagran",
             post: "",
         }
         ,
         {
             fotoPerfil: "img/adorable_animals.svg",
             usuario: "adorable_animals",
+            seguidor:"Segue você",
             post: "",
         }
     ];
     return(todosStorys);
+
 }
 
 function Storys() {
-    const todosStorys = objetosDosStorys();
+    const todosStorys = objetosUsuarios();
     return ( 
-    <div class="stories">
-        {todosStorys.map(function(todosStorys){
-            return( 
-            <div class="story">
-                <div class="imagem"> 
-                    <img src= {todosStorys.fotoPerfil} /> 
-                </div>
-                <div class="usuario">
-                    {todosStorys.usuario}
-                </div>
-            </div>)})}
+    <div class="todos-storys">
+        <div class="stories">
+            {todosStorys.map(function(todosStorys){
+                return( 
+                <div class="story">
+                    <div class="imagem"> 
+                        <img src= {todosStorys.fotoPerfil} /> 
+                    </div>
+                    <div class="usuario">
+                        {todosStorys.usuario}
+                    </div>
+                </div>)})}
+        </div>
+    <div class="setinha">
+              <ion-icon name="chevron-forward-circle"></ion-icon>
+            </div>
     </div>);
 }
 
 function Posts() {
-    const todosStorys = objetosDosStorys().filter(fotoPost => fotoPost.post !== "");
+    const todosStorys = objetosUsuarios().filter(fotoPost => fotoPost.post !== "");
     return (
         <div class="posts">
             {todosStorys.map(function (todosStorys) {
@@ -153,8 +171,7 @@ function Posts() {
 }
 
 function Usuario(){
-    const usuario = objetosDosStorys().filter(fotoPost => fotoPost.usuario === "catanacomics" );
-    console.log(usuario[0].segundoNome);
+    const usuario = objetosUsuarios().filter(fotoPost => fotoPost.usuario === "catanacomics" );
     return(   
     <div class="usuario">
         <img src={usuario[0].fotoPerfil} />
@@ -164,6 +181,32 @@ function Usuario(){
         </div>
     </div>
     );
+}
+
+function Sugestao(){
+    const todosStorys = objetosUsuarios();
+    return(
+        <div>
+    {todosStorys.map(function(todosStorys, indice ){   
+        if (indice >3) {
+            return
+        }
+        console.log(todosStorys);
+        return(
+        <div class="sugestao">
+            <div class="usuario">
+                <img src={todosStorys.fotoPerfil} />
+                    <div class="texto">
+                        <div class="nome">{todosStorys.usuario}</div>
+                <div class="razao">{todosStorys.seguidor}</div>
+                    </div>
+            </div>
+        <div class="seguir">Seguir</div>
+        </div>)
+})}
+</div>
+
+)
 }
 
 function Corpo() {
@@ -180,56 +223,7 @@ function Corpo() {
                         Sugestões para você
                         <div>Ver tudo</div>
                     </div>
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="img/bad.vibes.memes.svg" />
-                            <div class="texto">
-                                <div class="nome">bad.vibes.memes</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-                        <div class="seguir">Seguir</div>
-                    </div>
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="img/chibirdart.svg" />
-                            <div class="texto">
-                                <div class="nome">chibirdart</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-                        <div class="seguir">Seguir</div>
-                    </div>
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="img/razoesparaacreditar.svg" />
-                            <div class="texto">
-                                <div class="nome">razoesparaacreditar</div>
-                                <div class="razao">Novo no Instagram</div>
-                            </div>
-                        </div>
-                        <div class="seguir">Seguir</div>
-                    </div>
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="img/adorable_animals.svg" />
-                            <div class="texto">
-                                <div class="nome">adorable_animals</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-                        <div class="seguir">Seguir</div>
-                    </div>
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="img/smallcutecats.svg" />
-                            <div class="texto">
-                                <div class="nome">smallcutecats</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-                        <div class="seguir">Seguir</div>
-                    </div>
+                   <Sugestao />
                 </div>
                 <div class="links">
                     Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes • Hashtags • Idioma

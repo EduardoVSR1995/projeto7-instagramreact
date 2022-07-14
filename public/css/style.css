@@ -138,10 +138,10 @@ body {
   height: 14px;
 }
 
-.stories .setinha {
-  position: absolute;
-  right: 10px;
-  top: 45px;
+.setinha {
+  position:relative;
+  left: 570px;
+  bottom: 80px;
   height: 32px;
   width: 32px;
   color: #FFF;
