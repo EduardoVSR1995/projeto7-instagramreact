@@ -119,51 +119,51 @@ function CadaStorys(props){
 
 function Storys() {
     const todosStorys = objetosUsuarios();
-    return ( 
-    <div class="todos-storys">
-        <div class="stories">
-            {todosStorys.map((todosStorys)=> <CadaStorys fotoPerfil= {todosStorys.fotoPerfil} usuario={todosStorys.usuario} />)}
-        </div>
-    <div class="setinha">
-              <ion-icon name="chevron-forward-circle"></ion-icon>
+    return (
+        <div class="todos-storys">
+            <div class="stories">
+                {todosStorys.map((todosStorys) => <CadaStorys fotoPerfil={todosStorys.fotoPerfil} usuario={todosStorys.usuario} />)}
             </div>
-    </div>);
+            <div class="setinha">
+                <ion-icon name="chevron-forward-circle"></ion-icon>
+            </div>
+        </div>);
 }
 
 function CadaPost(props){
     return(
         <div class="post">
-        <div class="topo">
-            <div class="usuario">
-                <img src={props.fotoPerfil} />
-                {props.usuario}
-            </div>
-            <div class="acoes">
-                <ion-icon name="ellipsis-horizontal"></ion-icon>
-            </div>
-        </div>
-        <div class="conteudo">
-            <img src={props.post} />
-        </div>
-        <div class="fundo">
-            <div class="acoes">
-                <div>
-                    <ion-icon name="heart-outline"></ion-icon>
-                    <ion-icon name="chatbubble-outline"></ion-icon>
-                    <ion-icon name="paper-plane-outline"></ion-icon>
+            <div class="topo">
+                <div class="usuario">
+                    <img src={props.fotoPerfil} />
+                    {props.usuario}
                 </div>
-                <div>
-                    <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="acoes">
+                    <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
-            <div class="curtidas">
-                <img src="img/respondeai.svg" />
-                <div class="texto">
-                    Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
+            <div class="conteudo">
+                <img src={props.post} />
+            </div>
+            <div class="fundo">
+                <div class="acoes">
+                    <div>
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                        <ion-icon name="paper-plane-outline"></ion-icon>
+                    </div>
+                    <div>
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="curtidas">
+                    <img src="img/respondeai.svg" />
+                    <div class="texto">
+                        Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 
 }
@@ -209,17 +209,18 @@ function Sugestao(){
     const todosStorys = objetosUsuarios();
     return(
         <div>
-    {todosStorys.map(function(todosStorys, indice ){   
-        if (indice >3) {
-            return;
-        }
-        return(
-            <CadaSugestão fotoPerfil={todosStorys.fotoPerfil}  usuario= {todosStorys.usuario} seguidor={todosStorys.seguidor} />
-            )
-})}
-</div>
-
-)
+            {todosStorys.map(function(todosStorys, indice ){   
+                if (indice >3) {
+                    return;
+                }
+                    return(
+                    <CadaSugestão fotoPerfil={todosStorys.fotoPerfil}  usuario= {todosStorys.usuario} seguidor={todosStorys.seguidor} />
+                )
+                }
+                )           
+            }
+        </div>
+    )
 }
 
 function Corpo() {
