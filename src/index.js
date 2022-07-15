@@ -104,21 +104,25 @@ function objetosUsuarios(){
 
 }
 
+function CadaStorys(props){
+    return(
+        <div class="story">
+            <div class="imagem"> 
+                <img src= {props.fotoPerfil} /> 
+            </div>
+            <div class="usuario">
+                {props.usuario}
+            </div>
+        </div>
+    );
+}
+
 function Storys() {
     const todosStorys = objetosUsuarios();
     return ( 
     <div class="todos-storys">
         <div class="stories">
-            {todosStorys.map(function(todosStorys){
-                return( 
-                <div class="story">
-                    <div class="imagem"> 
-                        <img src= {todosStorys.fotoPerfil} /> 
-                    </div>
-                    <div class="usuario">
-                        {todosStorys.usuario}
-                    </div>
-                </div>)})}
+            {todosStorys.map((todosStorys)=> <CadaStorys fotoPerfil= {todosStorys.fotoPerfil} usuario={todosStorys.usuario} />)}
         </div>
     <div class="setinha">
               <ion-icon name="chevron-forward-circle"></ion-icon>
@@ -126,46 +130,49 @@ function Storys() {
     </div>);
 }
 
+function CadaPost(props){
+    return(
+        <div class="post">
+        <div class="topo">
+            <div class="usuario">
+                <img src={props.fotoPerfil} />
+                {props.usuario}
+            </div>
+            <div class="acoes">
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </div>
+        </div>
+        <div class="conteudo">
+            <img src={props.post} />
+        </div>
+        <div class="fundo">
+            <div class="acoes">
+                <div>
+                    <ion-icon name="heart-outline"></ion-icon>
+                    <ion-icon name="chatbubble-outline"></ion-icon>
+                    <ion-icon name="paper-plane-outline"></ion-icon>
+                </div>
+                <div>
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="curtidas">
+                <img src="img/respondeai.svg" />
+                <div class="texto">
+                    Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    );
+
+}
+
 function Posts() {
     const todosStorys = objetosUsuarios().filter(fotoPost => fotoPost.post !== "");
     return (
         <div class="posts">
-            {todosStorys.map(function (todosStorys) {
-                return (
-                    <div class="post">
-                        <div class="topo">
-                            <div class="usuario">
-                                <img src={todosStorys.fotoPerfil} />
-                                {todosStorys.usuario}
-                            </div>
-                            <div class="acoes">
-                                <ion-icon name="ellipsis-horizontal"></ion-icon>
-                            </div>
-                        </div>
-                        <div class="conteudo">
-                            <img src={todosStorys.post} />
-                        </div>
-                        <div class="fundo">
-                            <div class="acoes">
-                                <div>
-                                    <ion-icon name="heart-outline"></ion-icon>
-                                    <ion-icon name="chatbubble-outline"></ion-icon>
-                                    <ion-icon name="paper-plane-outline"></ion-icon>
-                                </div>
-                                <div>
-                                    <ion-icon name="bookmark-outline"></ion-icon>
-                                </div>
-                            </div>
-                            <div class="curtidas">
-                                <img src="img/respondeai.svg" />
-                                <div class="texto">
-                                    Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                );
-            })}
+            {todosStorys.map((todosStorys) => <CadaPost fotoPerfil={todosStorys.fotoPerfil} usuario={todosStorys.usuario} post={todosStorys.post} />)}
         </div>
     );
 }
@@ -183,26 +190,32 @@ function Usuario(){
     );
 }
 
+function CadaSugestão(props){
+    return(
+        <div class="sugestao">
+            <div class="usuario">
+                <img src={props.fotoPerfil} />
+                <div class="texto">
+                    <div class="nome">{props.usuario}</div>
+                    <div class="razao">{props.seguidor}</div>
+                </div>
+            </div>
+            <div class="seguir">Seguir</div>
+        </div>
+    )
+}
+
 function Sugestao(){
     const todosStorys = objetosUsuarios();
     return(
         <div>
     {todosStorys.map(function(todosStorys, indice ){   
         if (indice >3) {
-            return
+            return;
         }
-        console.log(todosStorys);
         return(
-        <div class="sugestao">
-            <div class="usuario">
-                <img src={todosStorys.fotoPerfil} />
-                    <div class="texto">
-                        <div class="nome">{todosStorys.usuario}</div>
-                <div class="razao">{todosStorys.seguidor}</div>
-                    </div>
-            </div>
-        <div class="seguir">Seguir</div>
-        </div>)
+            <CadaSugestão fotoPerfil={todosStorys.fotoPerfil}  usuario= {todosStorys.usuario} seguidor={todosStorys.seguidor} />
+            )
 })}
 </div>
 
@@ -271,7 +284,7 @@ function Navbar() {
     );
 }
 
-function Root() {
+function App() {
     return (
         <div class="root">
             <Navbar />
@@ -281,4 +294,4 @@ function Root() {
     );
 }
 
-ReactDOM.render(<Root />, document.querySelector("body"));
+ReactDOM.render(<App />, document.querySelector("body"));
