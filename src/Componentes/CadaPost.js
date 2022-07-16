@@ -1,6 +1,24 @@
+import React from 'react';
+
 function CadaPost(props){
+    function colore(cor){
+        if(cor.nomeClass === "normal"){
+            setIcon('heart');
+            return "red" ;
+
+        }
+        else{
+            setIcon('heart-outline');
+            return "normal";
+            
+        }
+    };
+
+    const [nomeClass, setNomeClass] = React.useState("normal");
+    const [icon, setIcon] = React.useState('heart-outline');
+
     return(
-        <div class="post">
+        <div className="post">
             <div class="topo">
                 <div class="usuario">
                     <img src={props.fotoPerfil} />
@@ -10,13 +28,13 @@ function CadaPost(props){
                     <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
-            <div class="conteudo">
+            <div class="contadorLikeeudo">
                 <img src={props.post} />
             </div>
             <div class="fundo">
                 <div class="acoes">
                     <div>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        <ion-icon name={icon} class={nomeClass} onClick={() => {setNomeClass(colore({nomeClass}))}} ></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
