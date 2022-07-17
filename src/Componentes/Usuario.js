@@ -1,13 +1,14 @@
-import objetosUsuarios from './objetosUsuarios';
+import usuarioDaConta from './usuarioDaConta';
 
 function Usuario(){
-    const usuario = objetosUsuarios.filter(fotoPost => fotoPost.usuario === "catanacomics" );
+    const usuario = usuarioDaConta[0]; 
+    console.log(usuario);
     return(   
     <div class="usuario">
-        <img src={usuario[0].fotoPerfil} />
+        <img src={usuario.fotoPerfil} />
         <div class="texto">
-            <strong>{usuario[0].usuario}</strong>
-            {usuario[0].segundoNome}
+            <strong>{usuario.usuario}</strong>
+            {usuario.segundoNome}
         </div>
     </div>
     );
