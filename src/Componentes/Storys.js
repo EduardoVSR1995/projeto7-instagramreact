@@ -4,11 +4,13 @@ import CadaStorys from './CadaStorys'
 function Storys() {
 
     function proximoStoris(){
-        
+    
     }
+   
+
     return (
         <div class="todos-storys">
-            <div class="stories">
+            <div class="stories" >
                 {objetosUsuarios.map((todosStorys) => <CadaStorys fotoPerfil={todosStorys.fotoPerfil} usuario={todosStorys.usuario} />)}
             </div>
             <div class="setinha">
