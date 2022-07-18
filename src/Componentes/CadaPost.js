@@ -40,7 +40,7 @@ function CadaPost(props){
                 </div>
             </div>
             <div class="contadorLikeeudo">
-                <img src={props.post} />
+                <img onClick={() => {setNomeClass(colore({nomeClass}))}} src={props.post} />
             </div>
             <div class="fundo">
                 <div class="acoes">
